@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResultListComponent } from './result-list.component';
+import { ItuneSearchListComponent } from './itune-search-list.component';
 
-describe('ResultListComponent', () => {
-  let component: ResultListComponent;
-  let fixture: ComponentFixture<ResultListComponent>;
+describe('ItuneSearchListComponent', () => {
+  let component: ItuneSearchListComponent;
+  let fixture: ComponentFixture<ItuneSearchListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResultListComponent ]
+      declarations: [ ItuneSearchListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ResultListComponent);
+    fixture = TestBed.createComponent(ItuneSearchListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

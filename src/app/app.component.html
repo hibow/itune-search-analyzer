@@ -8,10 +8,11 @@
     </div>
     <div class="page-sub-body">
       <div class="page-body__sidebar">
-        side bar
+        <app-itune-search-list></app-itune-search-list>
       </div>
       <div class="page-body__details">
-        detail
+        <router-outlet></router-outlet>
+        <!-- <app-result-detail [song]="selectedSong"></app-result-detail> -->
       </div>
     </div>
   </div>

@@ -1,0 +1,8 @@
+<h2>Top Songs</h2>
+<ul class="heroes">
+  <li *ngFor="let song of songs" (click)="onSelect(song)">
+    <a routerLink="/item/{{ song.id }}" routerLinkActive="active">
+      <span class="badge">{{ song.id }}</span> {{ song.name }}
+    </a>
+  </li>
+</ul>
