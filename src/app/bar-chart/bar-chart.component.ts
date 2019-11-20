@@ -1,0 +1,34 @@
+import { Component, OnInit, Input } from "@angular/core";
+import { ChartOptions, ChartType, ChartDataSets } from "chart.js";
+import { Label } from "ng2-charts";
+@Component({
+  selector: "app-bar-chart",
+  templateUrl: "./bar-chart.component.html",
+  styleUrls: ["./bar-chart.component.css"]
+})
+export class BarChartComponent implements OnInit {
+  barChartOptions: ChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    aspectRatio: 2
+  };
+  @Input() barChartLabels: Label[];
+  // barChartLabels: Label[] = [
+  //   "Apple",
+  //   "Banana",
+  //   "Kiwifruit",
+  //   "Blueberry",
+  //   "Orange",
+  //   "Grapes"
+  // ];
+  barChartType: ChartType = "bar";
+  barChartLegend = true;
+  barChartPlugins = [];
+  @Input() barChartData: ChartDataSets[];
+  // barChartData: ChartDataSets[] = [
+  //   { data: [45, 37, 60, 70, 46, 33], label: "Best Fruits" }
+  // ];
+  constructor() {}
+
+  ngOnInit() {}
+}

@@ -9,16 +9,31 @@ import { ItuneSearchListComponent } from "./itune-search-list/itune-search-list.
 import { ResultDetailComponent } from "./result-detail/result-detail.component";
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { InMemoryDataService } from "./in-memory-data.service";
+import { ItemViewComponent } from "./item-view/item-view.component";
+import { RecordLabelComponent } from "./record-label/record-label.component";
+import { ArtistViewComponent } from "./artist-view/artist-view.component";
+import { PriceViewComponent } from "./price-view/price-view.component";
+import { ChartsModule } from "ng2-charts";
+import { BarChartComponent } from './bar-chart/bar-chart.component';
+import { DoughtnutChartComponent } from './doughtnut-chart/doughtnut-chart.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     ItuneSearchComponent,
     ItuneSearchListComponent,
-    ResultDetailComponent
+    ResultDetailComponent,
+    ItemViewComponent,
+    RecordLabelComponent,
+    ArtistViewComponent,
+    PriceViewComponent,
+    BarChartComponent,
+    DoughtnutChartComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ChartsModule,
     AppRoutingModule,
     HttpClientModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests

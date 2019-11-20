@@ -1,8 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-// import { Song } from "../song";
 import { Song } from "../core/interfaces/song";
-import { Songs } from "../core/interfaces/songs";
-// import { SONGS } from "../mocks/songs.mock";
 import { SongService } from "../song.service";
 @Component({
   selector: "app-itune-search-list",

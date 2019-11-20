@@ -11,9 +11,21 @@
         <app-itune-search-list></app-itune-search-list>
       </div>
       <div class="page-body__details">
-        <router-outlet></router-outlet>
+        <nav>
+          Navigation area
+          <a href="#"> item view</a>
+          <a routerLink="/record-label">Record Label</a>
+          <a routerLink="/artist">Artist</a>
+          <a routerLink="/price">Price</a>
+        </nav>
+        <div class="child-container">
+          <router-outlet></router-outlet>
+        </div>
         <!-- <app-result-detail [song]="selectedSong"></app-result-detail> -->
       </div>
     </div>
+  </div>
+  <div class="page-footer">
+    Charlene Liu
   </div>
 </div>
