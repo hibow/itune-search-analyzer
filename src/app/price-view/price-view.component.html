@@ -1,10 +1,6 @@
 <h2>Price view</h2>
 <p>Description.......</p>
-<!-- <ul class="heroes">
-  <li *ngFor="let song of songs">
-    <span class="badge">{{ song.id }}</span> {{ song.name }}
-  </li>
-</ul> -->
+
 <div class="first-chart">
   <app-doughtnut-chart
     [doughnutChartLabels]="labelData"
@@ -13,6 +9,7 @@
 </div>
 <div class="second-chart">
   <app-bar-chart
+    [barChartOptions]="barOptions"
     [barChartData]="barData"
     [barChartLabels]="barLabels"
   ></app-bar-chart>

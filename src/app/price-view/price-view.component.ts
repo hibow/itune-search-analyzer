@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { Song } from "../core/interfaces/song";
+import { Component, OnInit, ɵɵsetComponentScope } from "@angular/core";
+import { Song, Group } from "../core/interfaces/song";
 import { SongService } from "../song.service";
 import { ChartOptions, ChartType, ChartDataSets } from "chart.js";
 import { MultiDataSet, Label } from "ng2-charts";
@@ -11,26 +11,67 @@ import { MultiDataSet, Label } from "ng2-charts";
 export class PriceViewComponent implements OnInit {
   songs: Song[];
   constructor(private songService: SongService) {}
-  //donut data
-  labelData: Label[] = ["BMW", "Ford", "Tesla"];
-  dataSet: MultiDataSet = [[55, 25, 20]];
-  //bar data
-  barLabels: Label[] = [
-    "Apple",
-    "Banana",
-    "Kiwifruit",
-    "Blueberry",
-    "Orange",
-    "Grapes"
-  ];
-  barData: ChartDataSets[] = [
-    { data: [45, 37, 60, 70, 46, 33], label: "Best Fruits" }
-  ];
-  getSongs(): void {
-    this.songService.getSongs().subscribe(songs => (this.songs = songs));
-  }
 
+  priceGroup: Group = {};
+  //donut data
+  labelData: Label[] = [];
+  dataSet: MultiDataSet = [[]];
+  //bar data
+  barLabels: Label[] = [];
+  barData: ChartDataSets[] = [
+    {
+      data: [],
+      label: "Price per track",
+      backgroundColor: [
+        "rgba(110, 114, 20, 1)",
+        "rgba(118, 183, 172, 1)",
+        "rgba(0, 148, 97, 1)",
+        "rgba(129, 78, 40, 1)",
+        "rgba(129, 199, 111, 1)"
+      ],
+      hoverBackgroundColor: [
+        "rgba(110, 114, 25, 1)",
+        "rgba(101, 200, 162, 1)",
+        "rgba(0, 148, 97, 1)",
+        "rgba(129, 78, 40, 1)",
+        "rgba(129, 199, 111, 1)"
+      ]
+    }
+  ];
+  barOptions: ChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    aspectRatio: 2,
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            min: 0,
+            stepSize: 1
+          }
+        }
+      ]
+    }
+  };
+  getPrices(): void {
+    this.songService.getSongs().subscribe(songs => {
+      this.songs = songs;
+      this.songs.forEach(song => {
+        if (!this.priceGroup[song.price]) {
+          this.priceGroup[song.price] = 1;
+        } else {
+          this.priceGroup[song.price]++;
+        }
+      });
+      for (let key in this.priceGroup) {
+        this.labelData.push(key);
+        this.dataSet[0].push(this.priceGroup[key]);
+        this.barLabels.push(key);
+        this.barData[0].data.push(this.priceGroup[key]);
+      }
+    });
+  }
   ngOnInit() {
-    this.getSongs();
+    this.getPrices();
   }
 }

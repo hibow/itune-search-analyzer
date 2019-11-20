@@ -13,7 +13,7 @@ export class InMemoryDataService implements InMemoryDbService {
         imgUrl:
           "https://is3-ssl.mzstatic.com/image/thumb/Music113/v4/ca/6e/a3/ca6ea33c-5fcb-c607-6c7e-409dfebc2bbb/19UMGIM64502.rgb.jpg/170x170bb.png",
         albumName: "Memories - Single",
-        price: "$1.29",
+        price: "$1.3",
         recordLabel: "℗ 2019 Interscope Records (222 Records)",
         audioUrl:
           "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview113/v4/e4/e0/bd/e4e0bd21-a0be-1e2b-5fcb-0858c2c17e32/mzaf_6992892853273950307.plus.aac.p.m4a",

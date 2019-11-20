@@ -11,3 +11,6 @@ export interface Song {
   ituneUrl: string;
   genre: string;
 }
+export interface Group {
+  [key: string]: number;
+}
