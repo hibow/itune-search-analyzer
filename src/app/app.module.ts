@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HttpClientJsonpModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -14,8 +14,8 @@ import { RecordLabelComponent } from "./record-label/record-label.component";
 import { ArtistViewComponent } from "./artist-view/artist-view.component";
 import { PriceViewComponent } from "./price-view/price-view.component";
 import { ChartsModule } from "ng2-charts";
-import { BarChartComponent } from './bar-chart/bar-chart.component';
-import { DoughtnutChartComponent } from './doughtnut-chart/doughtnut-chart.component';
+import { BarChartComponent } from "./bar-chart/bar-chart.component";
+import { DoughtnutChartComponent } from "./doughtnut-chart/doughtnut-chart.component";
 
 @NgModule({
   declarations: [
@@ -36,6 +36,7 @@ import { DoughtnutChartComponent } from './doughtnut-chart/doughtnut-chart.compo
     ChartsModule,
     AppRoutingModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.

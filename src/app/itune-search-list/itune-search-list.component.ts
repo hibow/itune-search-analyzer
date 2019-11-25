@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { Song } from "../core/interfaces/song";
 import { SongService } from "../song.service";
 @Component({
@@ -18,7 +18,12 @@ export class ItuneSearchListComponent implements OnInit {
   //   this.songs = this.songService.getSongs();
   // }
   getSongs(): void {
-    this.songService.getSongs().subscribe(songs => (this.songs = songs));
+    console.log("I am here");
+    // this.songService.getSongs().subscribe(songs => (this.songs = songs));
+    this.songService.currentSongs.subscribe(songs => {
+      console.log("what is:", songs);
+      this.songs = songs;
+    });
   }
   ngOnInit() {
     this.getSongs();

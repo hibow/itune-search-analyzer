@@ -1,1 +1,20 @@
-<p>{{ search }}</p>
+<div id="search-component">
+  <label for="search-box">Please type in your favorite genre!</label>
+  <input #searchBox id="search-box" (input)="searchSong(searchBox.value)" />
+</div>
+<form (ngSubmit)="submitSearch()">
+  <input type="text" placeholder="Search" name="term" [(ngModel)]="term" />
+  <button type="submit">Search</button>
+</form>
+<!-- <div *ngIf="!entry">
+  <p>Search for something!</p>
+</div>
+<div *ngIf="results?.resultCount == 0">
+  <p>Couldn't find results</p>
+</div> -->
+<!-- <div *ngIf="entry">
+  <p>entry exists!</p>
+  <div *ngFor="let item of entry">
+    <p>{{ item }}</p>
+  </div>
+</div> -->

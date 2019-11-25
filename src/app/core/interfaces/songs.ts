@@ -1,3 +1,3 @@
 import { Song } from "./song";
 
-export interface Songs extends Array<Song> {}
+export class Songs extends Array<Song> {}
