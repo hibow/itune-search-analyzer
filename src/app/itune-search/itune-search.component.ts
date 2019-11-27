@@ -1,7 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable, Subject } from "rxjs";
-import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
-import { Song } from "../core/interfaces/song";
+import { FormControl } from "@angular/forms";
+import {
+  debounceTime,
+  distinctUntilChanged,
+  switchMap,
+  startWith
+} from "rxjs/operators";
+import { Song, Genre } from "../core/interfaces/song";
 import { SongService } from "../song.service";
 import {
   SearchResults,
@@ -16,36 +22,56 @@ import {
 export class ItuneSearchComponent implements OnInit {
   songs$: Observable<Song[]>;
   // files: any = [];
+  results: any[] = [];
+  // filteredOptions: Genre[];
+  queryField: FormControl = new FormControl();
   term: string;
-  results: SearchResults[];
+  // results: SearchResults[];
   feed: SearchFeed[];
   entry: Song[];
+  showDropDown: boolean;
+  counter: number;
   private searchTerms = new Subject<string>();
   constructor(private songService: SongService) {}
   // Push a search term into the observable stream.
-  searchSong(term: string): void {
+  search(term: string): void {
     console.log("search component");
     this.searchTerms.next(term);
   }
   submitSearch() {
     console.log("searching");
-    this.songService.search(this.term).subscribe(res => {
+    this.songService.searchSubmit(this.term).subscribe(res => {
       this.entry = res;
       console.log("search entry:", this.entry);
     });
+    this.queryField.setValue("");
   }
+  selectChange(args) {
+    console.log("select");
+    this.term = args.target.value;
+    console.log(this.term);
+    this.queryField.setValue(this.term);
+  }
+
   //convert term
-  ngOnInit(): void {
-    this.songs$ = this.searchTerms.pipe(
-      // wait 300ms after each keystroke before considering the term
-      debounceTime(300),
+  ngOnInit() {
+    this.queryField.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe(queryField => {
+        this.results = this.songService.filterList(queryField);
+        // .map(result => result.category);
+        console.log(this.results);
+      });
+    // this.songs$ = this.searchTerms.pipe(
+    //   // wait 300ms after each keystroke before considering the term
+    //   debounceTime(300),
 
-      // ignore new term if same as previous term
-      distinctUntilChanged(),
+    //   // ignore new term if same as previous term
+    //   distinctUntilChanged(),
 
-      // switch to new search observable each time the term changes
-      switchMap((term: string) => this.songService.searchSongs(term))
-    );
+    //   // switch to new search observable each time the term changes
+    //   switchMap((term: string) => this.songService.searchSongs(term))
+    // );
     // this.getFiles();
   }
 }

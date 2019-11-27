@@ -14,6 +14,10 @@ export class Song {
 export interface Group {
   [key: string]: number;
 }
+export interface Genre {
+  id: string;
+  category: string;
+}
 /**
           id: item.id.attributes["im:id"],
           name: item["im:name"].label,

@@ -1,7 +1,9 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule, HttpClientJsonpModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatAutocompleteModule, MatInputModule } from "@angular/material";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ItuneSearchComponent } from "./itune-search/itune-search.component";
@@ -32,7 +34,11 @@ import { DoughtnutChartComponent } from "./doughtnut-chart/doughtnut-chart.compo
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatInputModule,
     FormsModule,
+    ReactiveFormsModule,
     ChartsModule,
     AppRoutingModule,
     HttpClientModule,

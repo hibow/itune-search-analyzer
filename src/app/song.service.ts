@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import { Song } from "./core/interfaces/song";
+import { Song, Genre } from "./core/interfaces/song";
 import { Songs } from "./core/interfaces/songs";
 import { SONGS } from "./mocks/songs.mock";
 import { Observable, of, BehaviorSubject, Subject } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { catchError, map, tap } from "rxjs/operators";
-
+import { Genres } from "../assets/data";
 import {
   SearchResults,
   SearchFeed,
@@ -15,6 +15,15 @@ import {
   providedIn: "root"
 })
 export class SongService {
+  songlist: Songs;
+  private mySongs = new BehaviorSubject<Songs>(this.songlist);
+  currentSongs = this.mySongs.asObservable();
+  song: Song;
+  term: string;
+  // myControl = new FormControl();
+  options: Genre[] = Genres;
+  filteredOptions: Observable<string[]>;
+
   private songsUrl = "api/songs"; // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
@@ -38,14 +47,18 @@ export class SongService {
       return of(result as T);
     };
   }
-  // getSong(id: string): Observable<Song> {
-  //   const url = `${this.songsUrl}/${id}`;
-  //   console.log("song service!");
-  //   return this.http
-  //     .get<Song>(url)
-  //     .pipe(catchError(this.handleError<Song>(`getsong id=${id}`)));
-  // }
+  //search genre and should get autocomplete for the list
+  filterList(value: string): Genre[] {
+    console.log("filter start!");
+    if (!value.trim()) {
+      return [];
+    }
+    const filterValue = value.toLowerCase();
 
+    return this.options.filter(option =>
+      option.category.toLowerCase().includes(filterValue)
+    );
+  }
   //search genre and should get autocomplete for the list
   searchSongs(term: string): Observable<Song[]> {
     if (!term.trim()) {
@@ -54,12 +67,22 @@ export class SongService {
     }
     console.log("search term:", term);
   }
+  private genreToID(term: string): string {
+    console.log("term:", term);
+    for (let i = 0; i < Genres.length; i++) {
+      if (Genres[i].category === term) {
+        console.log(Genres[i].id);
+        return Genres[i].id;
+      }
+    }
+    return "2";
+  }
+  searchGenre(searchText: string) {
+    return Genres.filter(genre => {
+      return genre.category.indexOf(searchText) != 1;
+    });
+  }
 
-  songlist: Songs;
-  private mySongs = new BehaviorSubject<Songs>(this.songlist);
-  currentSongs = this.mySongs.asObservable();
-  song: Song;
-  term: string;
   // results: SearchResults;
   // feed: SearchFeed[];
   // entry: SearchEntries[];
@@ -80,12 +103,15 @@ export class SongService {
   //     "callback"
   //   );
   // }
-  search(term: string): Observable<Song[]> {
-    let apiURL = `https://itunes.apple.com/us/rss/topsongs/limit=10/genre=${term}&callback=JSONP_CALLBACK`;
+  searchSubmit(term: string): Observable<Song[]> {
+    console.log("Strat submit!");
+    let gid: string = this.genreToID(term);
+    console.log("gid:", gid);
+    let apiURL = `https://itunes.apple.com/us/rss/topsongs/limit=10/genre=${gid}&callback=JSONP_CALLBACK`;
     return this.http
       .jsonp<SearchResults>(
         "https://itunes.apple.com/us/rss/topsongs/limit=10/genre=" +
-          term +
+          gid +
           "/json",
         "callback"
       )

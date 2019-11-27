@@ -1,20 +1,43 @@
-<div id="search-component">
+<!-- <div id="search-component">
   <label for="search-box">Please type in your favorite genre!</label>
   <input #searchBox id="search-box" (input)="searchSong(searchBox.value)" />
-</div>
-<form (ngSubmit)="submitSearch()">
-  <input type="text" placeholder="Search" name="term" [(ngModel)]="term" />
-  <button type="submit">Search</button>
-</form>
-<!-- <div *ngIf="!entry">
-  <p>Search for something!</p>
-</div>
-<div *ngIf="results?.resultCount == 0">
-  <p>Couldn't find results</p>
 </div> -->
-<!-- <div *ngIf="entry">
-  <p>entry exists!</p>
-  <div *ngFor="let item of entry">
-    <p>{{ item }}</p>
-  </div>
-</div> -->
+<div class="combo-container">
+  <span class="drop-down">
+    <!-- <form> -->
+    <input
+      [formControl]="queryField"
+      type="text"
+      name="term"
+      placeholder="search for genres..."
+      autocomplete="off"
+      autofocus
+    />
+    <select (change)="selectChange($event)">
+      <option disabled>Please select here</option>
+      <option
+        *ngFor="let result of results; let i = index"
+        [value]="results[i].category"
+      >
+        {{ results[i].category }}
+      </option>
+    </select>
+    <!-- <button class="drop-down-button" (click)="toggleDropDown()">
+      <i class="fa fa-angle-down"></i>
+    </button> -->
+  </span>
+  <!-- <form (ngSubmit)="submitSearch()">
+      <input type="text" placeholder="Search" name="term" [(ngModel)]="term" />
+      <button type="submit">Search</button>
+    </form> -->
+  <!-- <div class="data-container" *ngIf="showDropDown">
+    <p
+      *ngFor="let result of results; let i = index"
+      (click)="selectChange($event)"
+      [ngClass]="{ highlight: checkHighlight(i) }"
+    >
+      {{ results[i].category }}
+    </p> -->
+  <button (click)="submitSearch()">Search</button>
+  <!-- </form> -->
+</div>

@@ -1,9 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-* {
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-
+html,
 body {
+  height: calc(100% + 1px);
+}
+body {
+  font: 100% "Arimo", sans-serif;
   margin: 0;
 }
 
