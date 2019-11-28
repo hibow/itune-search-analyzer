@@ -28,7 +28,9 @@
 .search {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  /* flex-flow: row wrap;
+  flex-wrap: wrap; */
   width: 100%;
   max-width: 1140px;
   margin: 0 auto;

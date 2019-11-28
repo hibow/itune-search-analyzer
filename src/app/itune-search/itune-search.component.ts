@@ -20,40 +20,49 @@ import {
   styleUrls: ["./itune-search.component.css"]
 })
 export class ItuneSearchComponent implements OnInit {
-  songs$: Observable<Song[]>;
-  // files: any = [];
+  // songs$: Observable<Song[]>;
   results: any[] = [];
-  // filteredOptions: Genre[];
   queryField: FormControl = new FormControl();
+  // queryField1: FormControl = new FormControl();
   term: string;
   // results: SearchResults[];
-  feed: SearchFeed[];
+  // feed: SearchFeed[];
   entry: Song[];
-  showDropDown: boolean;
-  counter: number;
-  private searchTerms = new Subject<string>();
+  selectedResult: any;
+  onSelect(result: any): void {
+    this.selectedResult = result;
+    this.term = this.selectedResult.category;
+    console.log(this.term);
+    this.queryField.setValue(this.term);
+  }
+  // showDropDown: boolean;
+  // counter: number;
+  // private searchTerms = new Subject<string>();
   constructor(private songService: SongService) {}
   // Push a search term into the observable stream.
-  search(term: string): void {
-    console.log("search component");
-    this.searchTerms.next(term);
-  }
+  // search(term: string): void {
+  //   console.log("search component");
+  //   this.searchTerms.next(term);
+  // }
   submitSearch() {
     console.log("searching");
-    this.songService.searchSubmit(this.term).subscribe(res => {
-      this.entry = res;
-      console.log("search entry:", this.entry);
-    });
+    if (this.term !== "result not found") {
+      this.songService.searchSubmit(this.term).subscribe(res => {
+        this.entry = res;
+        console.log("search entry:", this.entry);
+      });
+    }
     this.queryField.setValue("");
   }
   selectChange(args) {
     console.log("select");
-    this.term = args.target.value;
+    let tempid = parseInt(args.target.value);
+    console.log(typeof tempid);
+    this.term = args.target.options[tempid].text;
     console.log(this.term);
     this.queryField.setValue(this.term);
   }
 
-  //convert term
   ngOnInit() {
     this.queryField.valueChanges
       .pipe(debounceTime(300), distinctUntilChanged())
@@ -62,16 +71,5 @@ export class ItuneSearchComponent implements OnInit {
         // .map(result => result.category);
         console.log(this.results);
       });
-    // this.songs$ = this.searchTerms.pipe(
-    //   // wait 300ms after each keystroke before considering the term
-    //   debounceTime(300),
-
-    //   // ignore new term if same as previous term
-    //   distinctUntilChanged(),
-
-    //   // switch to new search observable each time the term changes
-    //   switchMap((term: string) => this.songService.searchSongs(term))
-    // );
-    // this.getFiles();
   }
 }

@@ -22,28 +22,18 @@ export class SongService {
   term: string;
   // myControl = new FormControl();
   options: Genre[] = Genres;
-  filteredOptions: Observable<string[]>;
+  // filteredOptions: Observable<string[]>;
 
-  private songsUrl = "api/songs"; // URL to web api
+  // private songsUrl = "api/songs"; // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
   };
 
   constructor(private http: HttpClient) {}
-  // getSongs(): Observable<Song[]> {
-  //   return this.http
-  //     .get<Song[]>(this.songsUrl)
-  //     .pipe(catchError(this.handleError<Song[]>("getSongs", [])));
-  // }
+
   private handleError<T>(operation = "operation", result?: T) {
     return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      // this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
@@ -60,13 +50,13 @@ export class SongService {
     );
   }
   //search genre and should get autocomplete for the list
-  searchSongs(term: string): Observable<Song[]> {
-    if (!term.trim()) {
-      // if not search term, return empty hero array.
-      return of([]);
-    }
-    console.log("search term:", term);
-  }
+  // searchSongs(term: string): Observable<Song[]> {
+  //   if (!term.trim()) {
+  //     // if not search term, return empty hero array.
+  //     return of([]);
+  //   }
+  //   console.log("search term:", term);
+  // }
   private genreToID(term: string): string {
     console.log("term:", term);
     for (let i = 0; i < Genres.length; i++) {
@@ -83,10 +73,6 @@ export class SongService {
     });
   }
 
-  // results: SearchResults;
-  // feed: SearchFeed[];
-  // entry: SearchEntries[];
-
   getSong(id: string): Observable<Song> {
     return this.getSongs().pipe(
       map((songs: Song[]) => songs.find(p => p.id === id))
@@ -95,19 +81,11 @@ export class SongService {
   getSongs(): Observable<Song[]> {
     return this.currentSongs;
   }
-  // searchPodcast(term: string): Observable<SearchResults> {
-  //   return this.http.jsonp<SearchResults>(
-  //     "https://itunes.apple.com/us/rss/topsongs/limit=10/genre=" +
-  //       term +
-  //       "/json",
-  //     "callback"
-  //   );
-  // }
   searchSubmit(term: string): Observable<Song[]> {
     console.log("Strat submit!");
     let gid: string = this.genreToID(term);
     console.log("gid:", gid);
-    let apiURL = `https://itunes.apple.com/us/rss/topsongs/limit=10/genre=${gid}&callback=JSONP_CALLBACK`;
+    // let apiURL = `https://itunes.apple.com/us/rss/topsongs/limit=10/genre=${gid}&callback=JSONP_CALLBACK`;
     return this.http
       .jsonp<SearchResults>(
         "https://itunes.apple.com/us/rss/topsongs/limit=10/genre=" +

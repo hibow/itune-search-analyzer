@@ -2,8 +2,8 @@
   <label for="search-box">Please type in your favorite genre!</label>
   <input #searchBox id="search-box" (input)="searchSong(searchBox.value)" />
 </div> -->
-<div class="combo-container">
-  <span class="drop-down">
+<div class="dropdown">
+  <span>
     <!-- <form> -->
     <input
       [formControl]="queryField"
@@ -13,18 +13,23 @@
       autocomplete="off"
       autofocus
     />
-    <select (change)="selectChange($event)">
+    <div class="dropdown-content">
+      <ul class="dropdown-list">
+        <li
+          *ngFor="let result of results; let i = index"
+          [value]="i + 1"
+          (click)="onSelect(result)"
+        >
+          {{ results[i].category }}
+        </li>
+      </ul>
+    </div>
+    <!-- <select #selectList id="search-result" (change)="selectChange($event)">
       <option disabled>Please select here</option>
-      <option
-        *ngFor="let result of results; let i = index"
-        [value]="results[i].category"
-      >
+      <option *ngFor="let result of results; let i = index" [value]="i + 1">
         {{ results[i].category }}
       </option>
-    </select>
-    <!-- <button class="drop-down-button" (click)="toggleDropDown()">
-      <i class="fa fa-angle-down"></i>
-    </button> -->
+    </select> -->
   </span>
   <!-- <form (ngSubmit)="submitSearch()">
       <input type="text" placeholder="Search" name="term" [(ngModel)]="term" />
@@ -38,6 +43,6 @@
     >
       {{ results[i].category }}
     </p> -->
-  <button (click)="submitSearch()">Search</button>
   <!-- </form> -->
 </div>
+<button class="submitbtn" (click)="submitSearch()">Search</button>
