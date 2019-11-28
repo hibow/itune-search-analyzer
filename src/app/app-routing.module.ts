@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: "item/:id", component: ItemViewComponent },
   { path: "record-label", component: RecordLabelComponent },
   { path: "price", component: PriceViewComponent },
-  { path: "artist", component: ArtistViewComponent }
+  { path: "artist", component: ArtistViewComponent },
+  { path: "item", component: ItemViewComponent }
 ];
 
 @NgModule({

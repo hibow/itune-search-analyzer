@@ -22,18 +22,28 @@ export class RecordLabelComponent implements OnInit {
       data: [],
       label: "tracks per record label",
       backgroundColor: [
-        "rgba(110, 114, 20, 1)",
-        "rgba(118, 183, 172, 1)",
-        "rgba(0, 148, 97, 1)",
-        "rgba(129, 78, 40, 1)",
-        "rgba(129, 199, 111, 1)"
+        "rgba(241, 142, 44, 0.31)",
+        "rgba(247, 247, 139, 0.72)",
+        "rgba(44, 241, 241, 0.26)",
+        "rgba(139, 247, 139, 0.2)",
+        "rgba(191, 63, 191, 0.1)",
+        "rgba(241, 44, 142, 0.53)",
+        "rgba(44, 44, 241, 0.36)",
+        'rgba(241, 44, 44, 0.49)',
+        "rgba(142, 219, 137, 0.71)",
+        "rgba(98, 207, 165, 0.63)"
       ],
       hoverBackgroundColor: [
-        "rgba(110, 114, 25, 1)",
-        "rgba(101, 200, 162, 1)",
-        "rgba(0, 148, 97, 1)",
-        "rgba(129, 78, 40, 1)",
-        "rgba(129, 199, 111, 1)"
+        "rgba(241, 142, 44, 0.56)",
+        "rgba(241, 241, 44, 0.61)",
+        "rgba(44, 241, 241, 0.53)",
+        "rgba(139, 247, 139, 0.72)",
+        "rgba(247, 139, 247, 0.9)",
+        "rgba(241, 44, 142, 0.76)",
+        'rgba(44, 44, 241, 0.49)',
+        'rgba(241, 44, 44, 0.49)',
+        "rgba(104, 207, 98, 0.93)",
+        "rgba(98, 207, 165, 0.88)"
       ]
     }
   ];
@@ -55,6 +65,9 @@ export class RecordLabelComponent implements OnInit {
   getRecords(): void {
     this.songService.getSongs().subscribe(songs => {
       this.songs = songs;
+      if (!this.songs) {
+        return;
+      }
       this.songs.forEach(song => {
         if (!this.recordGroup[song.recordLabel]) {
           this.recordGroup[song.recordLabel] = 1;

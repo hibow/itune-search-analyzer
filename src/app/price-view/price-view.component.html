@@ -1,16 +1,15 @@
-<h2>Price view</h2>
-<p>Description.......</p>
-
-<div class="first-chart">
+<div class="price-wrapper">
+<div class="first-chart" *ngIf="labelData?.length > 0">
   <app-doughtnut-chart
     [doughnutChartLabels]="labelData"
     [doughnutChartData]="dataSet"
   ></app-doughtnut-chart>
 </div>
-<div class="second-chart">
+<div class="second-chart" *ngIf="barLabels?.length > 0">
   <app-bar-chart
     [barChartOptions]="barOptions"
     [barChartData]="barData"
     [barChartLabels]="barLabels"
   ></app-bar-chart>
+</div>
 </div>

@@ -11,10 +11,10 @@
   max-width: 1140px;
   height: 80px;
   margin: 0 auto;
-  border-bottom: 2px solid #007fff;
+  /* border-bottom: 2px solid #007fff; */
   font-size: 36px;
   font-weight: 700;
-  color: #0e63c7;
+  color: #5F5F5F
 }
 .page-body {
   display: flex;
@@ -34,14 +34,16 @@
   width: 100%;
   max-width: 1140px;
   margin: 0 auto;
-  border-bottom: 2px solid #007fff;
+  /* border-bottom: 2px solid #007fff; */
 }
 .page-sub-body {
   display: flex;
+  /* align-content: center;
+  justify-content: center; */
 }
 .page-body__sidebar {
   width: 300px;
-  border-right: 2px solid #007fff;
+  /* border-right: 2px solid #007fff; */
 }
 .page-body__details {
   width: 100%;
@@ -73,9 +75,17 @@ nav a.active {
   height: 100%;
   padding: 2px;
   /* need reset height*/
-  border-top: 2px solid #007fff;
+  /* border-top: 2px solid #007fff; */
 }
 .page-footer {
-  padding-top: 20px;
+  padding-top: 10px;
   text-align: center;
+  position: fixed;
+  background-color:#D5F5E3;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.copyright-text {
+  font-size: 12px
 }

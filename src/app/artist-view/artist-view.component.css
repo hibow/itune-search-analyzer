@@ -1,0 +1,14 @@
+
+.artist-wrapper {
+  width:400px;
+  padding: 20px;
+  overflow: auto;
+}
+.first-chart {
+  height: 50%;
+}
+
+.second-chart {
+  height: 50%;
+  margin-bottom: 40px;
+}

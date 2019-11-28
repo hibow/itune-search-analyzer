@@ -38,7 +38,7 @@ export class SongService {
     };
   }
   //search genre and should get autocomplete for the list
-  filterList(value: string): Genre[] {
+  filterList(value: string): any[] {
     console.log("filter start!");
     if (!value.trim()) {
       return [];
@@ -65,7 +65,7 @@ export class SongService {
         return Genres[i].id;
       }
     }
-    return "2";
+    return null;
   }
   searchGenre(searchText: string) {
     return Genres.filter(genre => {
@@ -81,10 +81,19 @@ export class SongService {
   getSongs(): Observable<Song[]> {
     return this.currentSongs;
   }
+  resetSongs() {
+    let emptylist:Song[] = [];
+    this.mySongs.next(emptylist);
+  }
   searchSubmit(term: string): Observable<Song[]> {
     console.log("Strat submit!");
     let gid: string = this.genreToID(term);
     console.log("gid:", gid);
+    if (!gid) {
+      // this.songlist = [];
+
+      return;
+    }
     // let apiURL = `https://itunes.apple.com/us/rss/topsongs/limit=10/genre=${gid}&callback=JSONP_CALLBACK`;
     return this.http
       .jsonp<SearchResults>(

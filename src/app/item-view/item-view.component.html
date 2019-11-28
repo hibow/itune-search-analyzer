@@ -1,11 +1,33 @@
-<div *ngIf="song">
-  <p>{{ song }}</p>
-  <h2>{{ song.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{ song.id }}</div>
-  <div>
-    <label
-      >name:
-      <input [(ngModel)]="song.name" placeholder="name" />
-    </label>
+<div class="wrapper">
+<div class="song-item" *ngIf="song; else noSong">
+  <div class="song-media">
+    <a href="{{song.ituneUrl}}" target="_blank">
+    <div class="song-img">
+        <img src={{song.imgUrl}}>
+    </div>
+  </a>
+    <div class="song-audio">
+        <audio controls>
+            <source src="{{song.audioUrl}}" type="audio/mp4" />
+            <p>Your browser does not support HTML5 audio.</p>
+          </audio>
+    </div>
   </div>
+    <div class="song-info">
+      <h2>{{song.name}}</h2>
+      <h3>BY {{song.artistName}}</h3>
+        <div class="song-text">
+          <div class="item-name">Album Name:</div><div class="item-value">{{song.albumName}}</div>
+          <div class="item-name">Record Label:</div><div class="item-value">{{song.recordLabel}}</div>
+          <div class="item-name">Release Date:</div><div class="item-value">{{song.releaseDate}}</div>
+          <div class="item-name">Price</div><div class="item-value">{{song.price}}</div>
+        </div>
+
+    </div>
+</div>
+
+<ng-template #noSong>
+  <p>Just hover the search bar and type in your favorite genre.</p>
+  <p>Let's learn more about the top 10 songs.</p>
+</ng-template>
 </div>

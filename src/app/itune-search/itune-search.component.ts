@@ -46,13 +46,17 @@ export class ItuneSearchComponent implements OnInit {
   // }
   submitSearch() {
     console.log("searching");
-    if (this.term !== "result not found") {
+    if (this.term) {
       this.songService.searchSubmit(this.term).subscribe(res => {
         this.entry = res;
         console.log("search entry:", this.entry);
       });
+    }else {
+      //clear current song list
+      this.songService.resetSongs();
     }
     this.queryField.setValue("");
+    this.term = '';
   }
   selectChange(args) {
     console.log("select");

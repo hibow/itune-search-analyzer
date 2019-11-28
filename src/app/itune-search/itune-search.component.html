@@ -1,20 +1,16 @@
-<!-- <div id="search-component">
-  <label for="search-box">Please type in your favorite genre!</label>
-  <input #searchBox id="search-box" (input)="searchSong(searchBox.value)" />
-</div> -->
+
 <div class="dropdown">
   <span>
-    <!-- <form> -->
     <input
       [formControl]="queryField"
       type="text"
       name="term"
-      placeholder="search for genres..."
+      placeholder="hover me & type in genre"
       autocomplete="off"
       autofocus
     />
-    <div class="dropdown-content">
-      <ul class="dropdown-list">
+    <div class="dropdown-content" >
+      <ul class="dropdown-list" *ngIf="results?.length > 0; else notfound">
         <li
           *ngFor="let result of results; let i = index"
           [value]="i + 1"
@@ -23,26 +19,10 @@
           {{ results[i].category }}
         </li>
       </ul>
+      <ng-template #notfound>
+          <p>result not found</p>
+        </ng-template>
     </div>
-    <!-- <select #selectList id="search-result" (change)="selectChange($event)">
-      <option disabled>Please select here</option>
-      <option *ngFor="let result of results; let i = index" [value]="i + 1">
-        {{ results[i].category }}
-      </option>
-    </select> -->
   </span>
-  <!-- <form (ngSubmit)="submitSearch()">
-      <input type="text" placeholder="Search" name="term" [(ngModel)]="term" />
-      <button type="submit">Search</button>
-    </form> -->
-  <!-- <div class="data-container" *ngIf="showDropDown">
-    <p
-      *ngFor="let result of results; let i = index"
-      (click)="selectChange($event)"
-      [ngClass]="{ highlight: checkHighlight(i) }"
-    >
-      {{ results[i].category }}
-    </p> -->
-  <!-- </form> -->
 </div>
 <button class="submitbtn" (click)="submitSearch()">Search</button>

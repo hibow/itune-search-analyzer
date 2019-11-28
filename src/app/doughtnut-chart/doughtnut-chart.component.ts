@@ -14,11 +14,16 @@ export class DoughtnutChartComponent implements OnInit {
   private donutColors = [
     {
       backgroundColor: [
-        "rgba(110, 114, 20, 1)",
-        "rgba(118, 183, 172, 1)",
-        "rgba(0, 148, 97, 1)",
-        "rgba(129, 78, 40, 1)",
-        "rgba(129, 199, 111, 1)"
+        "rgba(241, 142, 44, 0.31)",
+        "rgba(247, 247, 139, 0.72)",
+        "rgba(44, 241, 241, 0.26)",
+        "rgba(139, 247, 139, 0.2)",
+        "rgba(191, 63, 191, 0.1)",
+        "rgba(241, 44, 142, 0.53)",
+        "rgba(44, 44, 241, 0.36)",
+        'rgba(241, 44, 44, 0.49)',
+        "rgba(142, 219, 137, 0.71)",
+        "rgba(98, 207, 165, 0.63)"
       ]
     }
   ];
