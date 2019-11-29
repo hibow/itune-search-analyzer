@@ -52,6 +52,13 @@ export class RecordLabelComponent implements OnInit {
     maintainAspectRatio: false,
     aspectRatio: 1.5,
     scales: {
+      xAxes:[
+        {
+          ticks: {
+            display: false
+          }
+        }
+      ],
       yAxes: [
         {
           ticks: {
@@ -62,6 +69,7 @@ export class RecordLabelComponent implements OnInit {
       ]
     }
   };
+
   getRecords(): void {
     this.songService.getSongs().subscribe(songs => {
       this.songs = songs;

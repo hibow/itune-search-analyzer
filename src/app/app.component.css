@@ -4,16 +4,17 @@
   padding: 20px;
 }
 .page-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   max-width: 1140px;
   height: 80px;
   margin: 0 auto;
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 700;
   color: #5F5F5F
+}
+.page-header h3 {
+  width: 100%;
+  text-align: center;
 }
 .page-body {
   display: flex;
@@ -70,11 +71,12 @@ nav a.active {
   padding-top: 10px;
   text-align: center;
   position: fixed;
-  background-color:#D5F5E3;
   left: 0;
   bottom: 0;
   width: 100%;
 }
 .copyright-text {
-  font-size: 12px
+  font-size: 13px;
+  border-radius: 4px;
+  margin: 10px 5px;
 }
