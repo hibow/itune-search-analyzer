@@ -1,8 +1,5 @@
 .wrapper {
-  /* height: 50vh;
-  width: 50vw; */
   padding: 40px;
-  /* margin: 50px auto; */
 
 }
 .song-item{
@@ -43,14 +40,8 @@
 .song-info h2 {
   text-align: center;
 }
-/* .song-text h2 {
-  margin: 0 0 0 38px;
-  padding-top: 52px;
-  font-size: 34px;
-  color: #474747;
-} */
+
 .song-info h3 {
-  /* margin: 0 0 47px 38px; */
   text-align: center;
   font-size: 13px;
   font-family: 'Raleway', sans-serif;
@@ -61,8 +52,6 @@
 }
 
 .song-text p {
-  /* height: 125px; */
-  /* margin: 0 0 0 38px; */
   font-family: 'Playfair Display', serif;
   color: #8d8d8d;
   line-height: 1.7em;

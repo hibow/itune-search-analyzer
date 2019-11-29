@@ -56,7 +56,6 @@ export class ArtistViewComponent implements OnInit {
       yAxes: [
         {
           ticks: {
-            // max: 5,
             min: 0,
             stepSize: 1
           }

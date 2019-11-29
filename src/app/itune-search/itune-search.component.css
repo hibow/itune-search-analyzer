@@ -69,7 +69,6 @@
   font-size: 16px;
   border: none;
   cursor: pointer;
-  /* flex-grow: 1; */
 }
 .submitbtn:hover {
   background-color: #3e8e41;
@@ -80,9 +79,4 @@ input[type="text"] {
   border: 2px solid gray;
   border-radius: 4px;
   width: 30vw;
-  /* flex-grow: 6; */
 }
-
-/* @media only screen and (max-width: 768px) {
-
-} */

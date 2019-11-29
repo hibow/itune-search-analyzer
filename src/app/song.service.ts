@@ -1,15 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Song, Genre } from "./core/interfaces/song";
 import { Songs } from "./core/interfaces/songs";
-import { SONGS } from "./mocks/songs.mock";
-import { Observable, of, BehaviorSubject, Subject } from "rxjs";
+import { Observable, of, BehaviorSubject} from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { catchError, map, tap } from "rxjs/operators";
+import { map} from "rxjs/operators";
 import { Genres } from "../assets/data";
 import {
   SearchResults,
-  SearchFeed,
-  SearchEntries
 } from "./core/interfaces/searchResult";
 @Injectable({
   providedIn: "root"
@@ -20,11 +17,8 @@ export class SongService {
   currentSongs = this.mySongs.asObservable();
   song: Song;
   term: string;
-  // myControl = new FormControl();
   options: Genre[] = Genres;
-  // filteredOptions: Observable<string[]>;
 
-  // private songsUrl = "api/songs"; // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" })
   };
@@ -39,7 +33,6 @@ export class SongService {
   }
   //search genre and should get autocomplete for the list
   filterList(value: string): any[] {
-    console.log("filter start!");
     if (!value.trim()) {
       return [];
     }
@@ -49,28 +42,14 @@ export class SongService {
       option.category.toLowerCase().includes(filterValue)
     );
   }
-  //search genre and should get autocomplete for the list
-  // searchSongs(term: string): Observable<Song[]> {
-  //   if (!term.trim()) {
-  //     // if not search term, return empty hero array.
-  //     return of([]);
-  //   }
-  //   console.log("search term:", term);
-  // }
+
   private genreToID(term: string): string {
-    console.log("term:", term);
     for (let i = 0; i < Genres.length; i++) {
       if (Genres[i].category === term) {
-        console.log(Genres[i].id);
         return Genres[i].id;
       }
     }
     return null;
-  }
-  searchGenre(searchText: string) {
-    return Genres.filter(genre => {
-      return genre.category.indexOf(searchText) != 1;
-    });
   }
 
   getSong(id: string): Observable<Song> {
@@ -86,15 +65,10 @@ export class SongService {
     this.mySongs.next(emptylist);
   }
   searchSubmit(term: string): Observable<Song[]> {
-    console.log("Strat submit!");
     let gid: string = this.genreToID(term);
-    console.log("gid:", gid);
     if (!gid) {
-      // this.songlist = [];
-
       return;
     }
-    // let apiURL = `https://itunes.apple.com/us/rss/topsongs/limit=10/genre=${gid}&callback=JSONP_CALLBACK`;
     return this.http
       .jsonp<SearchResults>(
         "https://itunes.apple.com/us/rss/topsongs/limit=10/genre=" +
@@ -104,10 +78,8 @@ export class SongService {
       )
       .pipe(
         map(res => {
-          console.log(res);
           let entryPoint = res.feed.entry;
           let newList = entryPoint.map(item => {
-            // console.log(item);
             this.song = {
               id: item.id.attributes["im:id"],
               name: item["im:name"].label,
@@ -124,7 +96,6 @@ export class SongService {
             return this.song;
           });
           this.mySongs.next(newList);
-          console.log("done!");
           return newList;
         })
       );

@@ -11,7 +11,7 @@ export class DoughtnutChartComponent implements OnInit {
   @Input() doughnutChartLabels: Label[];
   @Input() doughnutChartData: MultiDataSet[];
   doughnutChartType: ChartType = "doughnut";
-  private donutColors = [
+  donutColors = [
     {
       backgroundColor: [
         "rgba(241, 142, 44, 0.31)",
@@ -27,8 +27,6 @@ export class DoughtnutChartComponent implements OnInit {
       ]
     }
   ];
-  // doughnutChartLabels: Label[] = ["BMW", "Ford", "Tesla"];
-  // doughnutChartData: MultiDataSet = [[55, 25, 20]];
   constructor() {}
 
   ngOnInit() {}

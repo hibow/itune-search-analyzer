@@ -8,20 +8,12 @@ import { SongService } from "../song.service";
 })
 export class ItuneSearchListComponent implements OnInit {
   songs: Song[];
-  selectedHero: Song;
   onSelect(song: Song): void {
-    console.log(song.name);
-    //  this.selectedSong = song;
+    // console.log(song.name);
   }
   constructor(private songService: SongService) {}
-  // getSongs(): void {
-  //   this.songs = this.songService.getSongs();
-  // }
   getSongs(): void {
-    console.log("I am here");
-    // this.songService.getSongs().subscribe(songs => (this.songs = songs));
     this.songService.currentSongs.subscribe(songs => {
-      console.log("what is:", songs);
       this.songs = songs;
     });
   }

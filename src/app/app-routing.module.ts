@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { ItuneSearchListComponent } from "./itune-search-list/itune-search-list.component";
-import { ResultDetailComponent } from "./result-detail/result-detail.component";
 import { ItemViewComponent } from "./item-view/item-view.component";
 import { RecordLabelComponent } from "./record-label/record-label.component";
 import { ArtistViewComponent } from "./artist-view/artist-view.component";

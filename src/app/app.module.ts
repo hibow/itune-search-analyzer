@@ -3,14 +3,10 @@ import { NgModule } from "@angular/core";
 import { HttpClientModule, HttpClientJsonpModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatAutocompleteModule, MatInputModule } from "@angular/material";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ItuneSearchComponent } from "./itune-search/itune-search.component";
 import { ItuneSearchListComponent } from "./itune-search-list/itune-search-list.component";
-import { ResultDetailComponent } from "./result-detail/result-detail.component";
-import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
-import { InMemoryDataService } from "./in-memory-data.service";
 import { ItemViewComponent } from "./item-view/item-view.component";
 import { RecordLabelComponent } from "./record-label/record-label.component";
 import { ArtistViewComponent } from "./artist-view/artist-view.component";
@@ -24,7 +20,6 @@ import { DoughtnutChartComponent } from "./doughtnut-chart/doughtnut-chart.compo
     AppComponent,
     ItuneSearchComponent,
     ItuneSearchListComponent,
-    ResultDetailComponent,
     ItemViewComponent,
     RecordLabelComponent,
     ArtistViewComponent,
@@ -35,8 +30,6 @@ import { DoughtnutChartComponent } from "./doughtnut-chart/doughtnut-chart.compo
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatAutocompleteModule,
-    MatInputModule,
     FormsModule,
     ReactiveFormsModule,
     ChartsModule,
@@ -46,9 +39,6 @@ import { DoughtnutChartComponent } from "./doughtnut-chart/doughtnut-chart.compo
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-      dataEncapsulation: false
-    })
   ],
   providers: [],
   bootstrap: [AppComponent]
