@@ -6,12 +6,7 @@
         <img src={{song.imgUrl}}>
     </div>
   </a>
-    <div class="song-audio">
-        <audio controls>
-            <source src="{{song.audioUrl}}" type="audio/mp4" />
-            <p>Your browser does not support HTML5 audio.</p>
-          </audio>
-    </div>
+
   </div>
     <div class="song-info">
       <h2>{{song.name}}</h2>
@@ -25,9 +20,15 @@
 
     </div>
 </div>
-
+<div class="song-audio">
+  <audio controls>
+      <source src="{{song.audioUrl}}" type="audio/mp4" />
+      <p>Your browser does not support HTML5 audio.</p>
+    </audio>
+</div>
 <ng-template #noSong>
   <p>Just hover the search bar and type in your favorite genre.</p>
   <p>Let's learn more about the top 10 songs.</p>
 </ng-template>
+
 </div>
