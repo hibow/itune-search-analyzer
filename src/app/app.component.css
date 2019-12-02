@@ -23,7 +23,6 @@
   flex-direction: column;
   width: 100%;
   max-width: 1140px;
-  /* min-height: calc(100vh - 120px); */
   min-height: 100vh;
   margin: 0 auto;
 }
@@ -39,7 +38,6 @@
   display: flex;
 }
 .page-body__sidebar {
-  /* width: 300px; */
   width: 50vw;
 }
 .page-body__details {

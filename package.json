@@ -1,6 +1,6 @@
 {
   "name": "itune-search-analyzer",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -46,5 +46,21 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
-  }
+  },
+  "description": "A web app for visualizing top 10 songs of searched genre. It was built for iTunes market research purpose. (it can be applied to any entity on Itunes. ex: podcast, books, movies, etc.)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hibow/itune-search-analyzer.git"
+  },
+  "keywords": [
+    "angular8",
+    "typescript",
+    "iTunes"
+  ],
+  "author": "hibow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hibow/itune-search-analyzer/issues"
+  },
+  "homepage": "https://github.com/hibow/itune-search-analyzer#readme"
 }
