@@ -1,6 +1,6 @@
 <div class="song-list" *ngIf= "songs?.length >0; else other" >
   <h2>{{songs[0].genre}}</h2>
-<ol>
+<ol class="list-contenet">
   <li *ngFor="let song of songs" (click)="onSelect(song)">
     <a routerLink="/item/{{ song.id }}" routerLinkActive="active">
       <span>{{ song.name }}</span>

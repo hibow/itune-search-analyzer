@@ -71,7 +71,7 @@ export class SongService {
     }
     return this.http
       .jsonp<SearchResults>(
-        "https://itunes.apple.com/us/rss/topsongs/limit=10/genre=" +
+        "https://itunes.apple.com/us/rss/topsongs/limit=50/genre=" +
           gid +
           "/json",
         "callback"

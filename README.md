@@ -3,7 +3,7 @@
 > A web app for visualizing top 10 songs of searched genre. It was built for iTunes market research purpose. (it can be applied to any entity on Itunes. ex: podcast, books, movies, etc.)
 
 Build with:
-- [Angular CLI version 8.3.19](https://github.com/angular/angular-cli)
+- [Angular CLI version 8](https://github.com/angular/angular-cli)
 - Typescript
 - ITunes search API
 - Chart.js & ng2-charts

@@ -1,4 +1,5 @@
 
+
 ol{
   counter-reset: li;
   list-style: none;
@@ -7,16 +8,18 @@ ol{
   font-family: 'Raleway', sans-serif;
   padding: 0;
   margin-bottom: 4em;
+  height: 70vh;
+  overflow: scroll;
   }
 
   .song-list ol ol{
-  margin: 0 0 0 2em;
+  margin: 0 0 0 0;
 }
 
 .song-list a{
   position: relative;
   display: block;
-  padding: .4em .4em .4em 2em;
+  padding: .4em .4em .4em 2.3em;
   *padding: .4em;
   margin: .5em 0;
   background: #93C775;
@@ -38,7 +41,7 @@ ol{
   content: counter(li);
   counter-increment: li;
   position: absolute;
-  left: -1.3em;
+  left: .02em;
   top: 50%;
   margin-top: -1.3em;
   background:#93C775;
