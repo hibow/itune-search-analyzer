@@ -46,7 +46,6 @@ export class SongService {
   private genreToID(term: string): string {
     for (let i = 0; i < Genres.length; i++) {
       if (Genres[i].category === term) {
-        console.log(term);
         return Genres[i].id;
       }
     }
@@ -67,7 +66,6 @@ export class SongService {
   }
   searchSubmit(term: string): Observable<Song[]> {
     let gid: string = this.genreToID(term);
-    console.log('id:', gid)
     if (!gid) {
       return;
     }

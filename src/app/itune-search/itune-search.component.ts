@@ -21,7 +21,6 @@ export class ItuneSearchComponent implements OnInit {
   onSelect(result: any): void {
     this.selectedResult = result;
     this.term = this.selectedResult.category;
-    console.log('term:', this.term)
     this.queryField.setValue(this.term);
   }
   constructor(private songService: SongService) {}
@@ -33,7 +32,6 @@ export class ItuneSearchComponent implements OnInit {
     if (this.term) {
       this.songService.searchSubmit(this.term).subscribe(res => {
         this.entry = res;
-        console.log('result:', res);
       });
     }else {
       this.songService.resetSongs();
