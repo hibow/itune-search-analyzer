@@ -46,6 +46,7 @@ export class SongService {
   private genreToID(term: string): string {
     for (let i = 0; i < Genres.length; i++) {
       if (Genres[i].category === term) {
+        console.log(term);
         return Genres[i].id;
       }
     }
@@ -66,6 +67,7 @@ export class SongService {
   }
   searchSubmit(term: string): Observable<Song[]> {
     let gid: string = this.genreToID(term);
+    console.log('id:', gid)
     if (!gid) {
       return;
     }
@@ -87,7 +89,7 @@ export class SongService {
               imgUrl: item["im:image"][2].label,
               price: item["im:price"].label,
               albumName: item["im:collection"]["im:name"].label,
-              releaseDate: item["im:releaseDate"].attributes.label,
+              releaseDate: item["im:releaseDate"]? item["im:releaseDate"].attributes.label: 'coming soon',
               recordLabel: item.rights.label,
               audioUrl: item.link[1].attributes.href,
               ituneUrl: item.link[0].attributes.href,
